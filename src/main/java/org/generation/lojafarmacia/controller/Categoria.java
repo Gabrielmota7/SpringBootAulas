@@ -36,17 +36,17 @@ public class Categoria {
 	}
 	
 	@GetMapping("/tipo/{tipo}")
-	public ResponseEntity<List<categoria>> getByTipo(@PathVariable String tipo) {
-		return ResponseEntity.ok(repository.findAllByTipoContainingIgnoreCase(tipo));
+	public ResponseEntity<List<categoria>> getByTipo(@PathVariable String descricao) {
+		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 	
 	@PostMapping
-	public ResponseEntity<categoria> post(@RequestBody Categoria categoria) {
+	public ResponseEntity<categoria> post(@RequestBody categoria categoria) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria));
 	}
 	
 	@PutMapping
-	public ResponseEntity<categoria> put(@RequestBody Categoria categoria) {
+	public ResponseEntity<categoria> put(@RequestBody categoria categoria) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(categoria));
 	}
 	
